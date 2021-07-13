@@ -50,5 +50,19 @@ const io = socket(server, {
 
 app.io = require('socket.io')();
 
+
+
+
+io.on("connect", (socket) => {
+console.log('user online')
+
+
+socket.on('disconnect', function(){
+  console.log('user  disconnected');
+});
+
+});
+
+
 var TodoSocket = require('./routes/todosocket')(io);
 app.use('/api/todosocket',TodoSocket);
